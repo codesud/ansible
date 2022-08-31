@@ -13,3 +13,10 @@
         msg: The value of URL is {{ URL }}
       vars:
         URL: task.google.com # These are local variables or task level variables
+
+  tasks:
+    - name: Printing CLI_URL
+      ansible.builtin.debug:
+        msg: The value of CLI_URL is {{ CLI_URL }}
+      vars:
+        URL: task.google.com # These are local variables or task level variables
