@@ -2,6 +2,10 @@
   hosts: all
   vars:
     URL: play.google.com # These are global variables or play level variables
+  vars_prompt: 
+    - name: URL
+      prompt: Enter URL
+      
   tasks:
     - name: Print URL
       ansible.builtin.debug:
@@ -18,3 +22,13 @@
         msg: The value of CLI_URL is {{ CLI_URL }}
       vars:
         URL: task.google.com # These are local variables or task level variables
+
+### Which variable will have higher precedence ?
+
+### Command Line Variable > Local Variables > Prompt Variables  > Global Variables
+
+
+# We can also supply the variables from the command line and we refer it as run time variables.
+
+# How can we override the variables ?
+# But pass it from the Command Line 
