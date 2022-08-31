@@ -1,29 +1,29 @@
-- name: Play1 
-  hosts: all  
-  tasks:  
-    - name: Print Hello from Play1 
+- name: Play1
+  hosts: all
+  tasks: 
+    - name: Print Hello from Play1
       ansible.builtin.debug:
-        msg: Hello from task1 of play1 
+        msg: Hello from task1 of play1
 
-    - name: Print Hai from Play1 
-      ansible.builtin.debug:
-        msg: Hai from task2 of play1 
+#     - name: Print Hai from Play1 
+#       ansible.builtin.debug:
+#         msg: Hai from task2 of play1 
 
-- name: Play2 
-  hosts: all  
-  tasks:  
-    - name: Print Hello from Play2 
-      ansible.builtin.debug:
-        msg: Hello from task1 of play2 
+# - name: Play2 
+#   hosts: all  
+#   tasks:  
+#     - name: Print Hello from Play2 
+#       ansible.builtin.debug:
+#         msg: Hello from task1 of play2 
 
 
---- 
+# --- 
 
-- name: creating a file 
-  hosts: all 
-  tasks:
-  - name: Creating an empty file
-    file:
-      path: /home/centos/apple.txt 
-      state: touch
-      owner: centos 
+# - name: creating a file 
+#   hosts: all 
+#   tasks:
+#   - name: Creating an empty file
+#     file:
+#       path: /home/centos/apple.txt 
+#       state: touch
+#       owner: centos 
