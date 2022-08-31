@@ -1,2 +1,5 @@
-172.31.81.218
-172.31.94.66
+[Prod]
+ratings-prod.roboshopdirect.internal
+
+[Dev]
+upi.roboshopdirect.internal
