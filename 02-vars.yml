@@ -7,7 +7,7 @@
       ansible.builtin.debug:
         msg: The value of URL is {{ URL }}
 
-   tasks:
+  tasks:
     - name: Print URL
       ansible.builtin.debug:
         msg: The value of URL is {{ URL }}
