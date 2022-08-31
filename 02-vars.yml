@@ -2,10 +2,11 @@
   hosts: all
   vars:
     URL: play.google.com # These are global variables or play level variables
-  vars_prompt: 
-    - name: URL
-      prompt: Enter URL
-      
+
+  vars_prompt:
+    - name: URL 
+      prompt: Enter URL 
+      private: no    
   tasks:
     - name: Print URL
       ansible.builtin.debug:
