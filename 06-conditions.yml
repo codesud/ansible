@@ -1,5 +1,8 @@
 - name: Demo on conditions
   hosts: all
+  vars:
+    action: false
+    sample: xyz
   tasks: 
     - name: Run this task only for CentOS machines
       debug: 
