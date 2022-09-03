@@ -9,7 +9,7 @@
       ansible.builtin.debug:
         msg: "{{ ansible_default_ipv4.macaddress }}"
 
-  - name: Demo on facts 
+- name: Demo on facts 2
   hosts: DEV 
   tasks:  
     - name: Printing a fact
