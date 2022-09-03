@@ -7,4 +7,4 @@
 
     - name: Printing the output of uptime
       debug:
-        msg: "{{ OUT }}"
+        msg: "{{ OUT.stdout }}"
