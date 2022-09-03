@@ -1,0 +1,13 @@
+- name: Check whether tomcat is running or not 
+  hosts: all  
+  tasks:
+    - name: Check tomcat is running or not 
+      shell: ps -ef |grep java | grep -v grep
+      register: OUT 
+      ignore_errors: yes 
+    
+    - name: Starting tomcat 
+      debug: 
+        msg: Starting Tomcat 
+
+# If any of the task fails, the subsequest task won't be executed and it will be terminated then and there it self
