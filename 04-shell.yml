@@ -7,4 +7,4 @@
 
     - name: Printing the output of uptime
       debug:
-        msg: "{{ OUT.stdout }}"
+        msg: The value of exit code is "{{ OUT.rc }}" and standard output is "{{ OUT.stdout }}"
