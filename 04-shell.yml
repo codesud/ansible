@@ -1,0 +1,10 @@
+- name: Demo on variables 
+  hosts: all  
+  tasks:  
+    - name: Run Shell Command
+      shell: uptime
+      register: OUT
+
+    - name: Printing the output of uptime
+      debug:
+        msg: "{{ OUT }}"
