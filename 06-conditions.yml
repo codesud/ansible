@@ -1,0 +1,25 @@
+- name: Demo on conditions
+  hosts: all
+  tasks: 
+    - name: Run this task only for CentOS machines
+      debug: 
+        msg: Hello To CentOS
+      when: ansible_distribution == "CentOS"
+
+    - name: Run this task only for Ubuntu machines
+      debug: 
+        msg: Hello To Ubuntu
+      when: ansible_distribution == "Ubuntu"   
+
+    - name: Run ABC action
+      debug: 
+        msg: Running ABC action
+      when: action  
+
+    - name: Demo on defined and undefiend key words
+      debug: 
+        msg: "Sample is declared"
+      when: sample is defined
+
+# If any of the task fails, the subsequest task won't be executed and it will be terminated then and there it self
+# defined and undefined are the predefined keywords 
