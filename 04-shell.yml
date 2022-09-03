@@ -2,7 +2,7 @@
   hosts: all  
   tasks:  
     - name: Run Shell Command
-      shell: uptime
+      shell: uptime | awk -F " " '{print $3}'
       register: OUT
 
     - name: Printing the output of uptime
