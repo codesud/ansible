@@ -1,0 +1,10 @@
+- name: Demo on facts 
+  hosts: PROD  
+  tasks:  
+    - name: Printing a fact
+      ansible.builtin.debug:
+        msg: "{{ ansible_distribution }}"
+
+    - name: Printing the mac address
+      ansible.builtin.debug:
+        msg: "{{ ansible_default_ipv4.macaddress }}"
