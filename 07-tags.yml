@@ -1,0 +1,22 @@
+- name: Demo on tags  
+  hosts: all  
+  tasks:
+    - name: Running Webserver installation 
+      debug: 
+        msg: Web Server installation  
+      tags: web 
+
+    - name: Starting Webserver  
+      debug: 
+        msg: Web Server Start in progress  
+      tags: web   
+
+    - name: Running AppServer installation 
+      debug: 
+        msg: App Server installation 
+      tags: app 
+
+    - name: Starting Appserver  
+      debug: 
+        msg: App Server Start in progress    
+      tags: app 
