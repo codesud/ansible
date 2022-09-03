@@ -1,0 +1,11 @@
+- name: Demo on privilege escalation 
+  hosts: all 
+  tasks:  
+    - name: Just a shell command 
+      shell: id 
+      register: OUT  
+      become: yes  # sudo su - 
+      
+    - name: Display the output  
+      debug:
+        msg: "{{ OUT }}"
