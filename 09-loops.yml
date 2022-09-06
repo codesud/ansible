@@ -1,0 +1,12 @@
+- name: Demo on loops 
+  hosts: all 
+  tasks:  
+    - name: Demo on loop 
+      debug:
+        msg: "value is {{ item }}"
+      loop:  
+        - 10
+        - 20  
+        - 30
+        - abc
+# Each and every entry in a loop is referred as a item variable.
