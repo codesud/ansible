@@ -1,5 +1,7 @@
 - name: Demo on variables
   hosts: all
+  vars_files:
+    - proj-A-file-vars.yml
   vars:
     URL: play.google.com # These are global variables or play level variables
 
@@ -10,7 +12,7 @@
   tasks:
     - name: Print URL
       ansible.builtin.debug:
-        msg: The value of URL is {{ URL }}
+        msg: The value of URL is {{ FILE_URL }}
 
 
     - name: Printing URL
