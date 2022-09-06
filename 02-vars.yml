@@ -7,7 +7,7 @@
 
   vars_prompt:
     - name: URL 
-      prompt: Enter URL 
+      prompt: Enter URL  # These are prompt variables
       private: no
   tasks:
     - name: Print URL
