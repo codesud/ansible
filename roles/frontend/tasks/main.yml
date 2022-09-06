@@ -2,4 +2,8 @@
   ansible.builtin.package:
       name: nginx
       state: present
-      
+- name: Download and extracting 
+  ansible.builtin.unarchive:
+    src: https://github.com/stans-robot-project/frontend/archive/main.zip
+    dest: /tmp
+    remote_src: yes      
