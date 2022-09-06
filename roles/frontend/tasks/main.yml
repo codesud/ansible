@@ -2,8 +2,21 @@
   ansible.builtin.package:
       name: nginx
       state: present
+
 - name: Download and extracting 
   ansible.builtin.unarchive:
     src: https://github.com/stans-robot-project/frontend/archive/main.zip
     dest: /tmp
-    remote_src: yes      
+    remote_src: yes  
+
+- name: Cleanup of Old HTML content
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+    state: absent
+
+- name: Copy the front end content nginx path
+  ansible.builtin.copy:
+    src: /tmp/frontend-main/static/
+    dest: /usr/share/nginx/html
+    remote_src: yes  
+    
