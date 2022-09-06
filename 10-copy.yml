@@ -3,5 +3,5 @@
   tasks:
     - name: copy a proxy file to remote nodes 
       ansible.builtin.copy:
-        src: proxy.conf     # make sure source file exists
+        src: proxyy.conf     
         dest: /home/centos 
