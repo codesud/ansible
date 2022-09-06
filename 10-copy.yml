@@ -1,0 +1,7 @@
+- name: Demo on copying the file to the remote machines 
+  hosts: all 
+  tasks:
+    - name: copy a proxy file to remote nodes 
+      ansible.builtin.copy:
+        src: proxy.conf 
+        dest: /home/centos 
