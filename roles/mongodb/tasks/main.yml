@@ -25,12 +25,12 @@
     name: common
     tasks_from: download-from-github
 
-- name: Loading catalogue and users Schemas
+- name: Loading Catalogue and Users Schemas
   community.mongodb.mongodb_shell:
     file: "/tmp/mongodb-main/{{item}}.js"
     idempotent: yes
-  loop:
-    - catalogue
+  loop: 
+    - catalogue 
     - users
 
 - name: Disabling auto shutdown and setting hostname for {{COMPONENT}}
