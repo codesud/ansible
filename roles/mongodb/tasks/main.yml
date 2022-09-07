@@ -25,3 +25,13 @@
     src: "{{REPO_URL}}"
     dest: /tmp
     remote_src: yes 
+
+- name: Loading Catalogue Schema of {{COMPONENT}}
+  community.mongodb.mongodb_shell:
+    file: "/tmp/mongodb-main/catalogue.js"
+    idempotent: yes
+
+- name: Loading Users Schema of {{COMPONENT}}
+  community.mongodb.mongodb_shell:
+    file: "/tmp/mongodb-main/users.js"
+    idempotent: yes
