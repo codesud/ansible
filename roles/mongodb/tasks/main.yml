@@ -5,7 +5,7 @@
 
 - name: Install mongodb
   ansible.builtin.package:
-      name: mongodb.org
+      name: mongodb-org
       state: present
 
 - name: Update mongodb listening address
