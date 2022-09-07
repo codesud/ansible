@@ -20,11 +20,10 @@
     state: started
     enabled: yes
 
-- name: Download and extracting the {{COMPONENT}} repo
-  ansible.builtin.unarchive:
-    src: "{{REPO_URL}}"
-    dest: /tmp
-    remote_src: yes 
+- name: Download and extracting {{COMPONENT}} from github
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download-from-github
 
 - name: Loading catalogue and users Schemas
   community.mongodb.mongodb_shell:
@@ -34,3 +33,7 @@
     - catalogue
     - users
 
+- name: Disabling auto shutdown and setting hostname for {{COMPONENT}}
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: set-hostname
