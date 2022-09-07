@@ -17,3 +17,14 @@
   ansible.builtin.include_role:
     name: common
     tasks_from: download-from-github
+
+- name: Cleanup of {{COMPONENT}}
+  ansible.builtin.file:
+    path: /home/{{APPUSER}}/{{COMPONENT}}
+    state: absent
+
+- name: Copy the {{COMPONENT}} content to {{APPUSER}}
+  ansible.builtin.copy:
+    src: /tmp/{{COMPONENT}}-main/static
+    dest: /home/{{APPUSER}}/{{COMPONENT}}
+    remote_src: yes 
