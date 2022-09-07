@@ -8,10 +8,11 @@
         - gcc-c++
       state: present
 
-- name: Creating Appuser account {{APPUSER}}
-  ansible.builtin.user:
-    name: "{{APPUSER}}"
-  
+- name: Creating Appuser account
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: create-user
+
 - name: Download and extracting {{COMPONENT}} from github
   ansible.builtin.include_role:
     name: common
