@@ -20,8 +20,8 @@
     state: started
     enabled: yes
 
-- name: Download and extracting the {{ COMPONENT }} repo
+- name: Download and extracting the {{COMPONENT}} repo
   ansible.builtin.unarchive:
-    src: "REPO_URL"
+    src: "{{REPO_URL}}"
     dest: /tmp
     remote_src: yes 
