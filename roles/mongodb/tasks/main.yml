@@ -28,7 +28,7 @@
 - name: Loading Catalogue and Users Schemas
   community.mongodb.mongodb_shell:
     file: "/tmp/mongodb-main/{{item}}.js"
-    idempotent: yes
+    idempotent: no
   loop: 
     - catalogue 
     - users
