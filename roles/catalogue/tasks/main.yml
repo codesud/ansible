@@ -1,0 +1,19 @@
+- name: Configure Yum repos
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+
+- name: Installing {{COMPONENT}}
+  ansible.builtin.package:
+      name: 
+        - nodejs
+        - gcc-c++
+      state: present
+
+- name: Creating Appuser account {{APPUSER}}
+  ansible.builtin.user:
+    name: "{{APPUSER}}"
+  
+- name: Download and extracting {{COMPONENT}} from github
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: download-from-github
+   

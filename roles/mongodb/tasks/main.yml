@@ -25,10 +25,11 @@
     name: common
     tasks_from: download-from-github
 
+## To install it, use: ansible-galaxy collection install community.mongodb
 - name: Loading Catalogue and Users Schemas
   community.mongodb.mongodb_shell:
     file: "/tmp/mongodb-main/{{item}}.js"
-    idempotent: no
+    idempotent: yes
   loop: 
     - catalogue 
     - users
