@@ -26,3 +26,5 @@
 - name: Install packages based on package.json.
   community.general.npm:
     path: /home/{{APPUSER}}/{{COMPONENT}}/
+
+## need to relook into community.general,  currnetly not working
