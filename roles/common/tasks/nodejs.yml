@@ -26,8 +26,12 @@
 - name: Installing npm 
   ansible.builtin.shell: cd /home/roboshop/catalogue && npm install
 
-- name: Copying the systemd file
-  ansible.builtin.copy:
-        src: systemd.service
-        dest: /etc/systemd/system/{{COMPONENT}}.service
+- name: Configuring and Starting {{COMPONENT}}
+  ansible.builtin.include_role:
+    name: common 
+    tasks_from: systemd 
 
+- name: Set-hostname 
+  ansible.builtin.include_role:
+    name: common 
+    tasks_from: set-hostname
