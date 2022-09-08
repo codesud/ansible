@@ -23,7 +23,8 @@
   ansible.builtin.copy:
     src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
-
+  notify: Restart-Nginx   # When ever there is a change in this file, restart of nginx will happen
+  
 - name: Restart nginx service
   ansible.builtin.service:
     name: nginx
