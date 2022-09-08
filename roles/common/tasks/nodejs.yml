@@ -26,9 +26,8 @@
 - name: Installing npm 
   ansible.builtin.shell: cd /home/roboshop/catalogue && npm install
 
-# - name: Install packages based on package.json.
-#   community.general.npm:
-#     path: /home/{{APPUSER}}/{{COMPONENT}}/
+- name: Copying the systemd file
+  ansible.builtin.copy:
+        src: systemd.service
+        dest: /etc/systemd/system/{{COMPONENT}}.service
 
-
-## need to relook into community.general,  currnetly not working
