@@ -25,7 +25,7 @@
     dest: /etc/nginx/default.d/roboshop.conf
   notify: Restart-Nginx   # When ever there is a change in this file, restart of nginx will happen
 
-- name: Restart nginx service
+- name: Start-nginx
   ansible.builtin.service:
     name: nginx
     state: restarted
