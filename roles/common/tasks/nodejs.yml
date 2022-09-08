@@ -5,7 +5,7 @@
   ansible.builtin.package:
       name: 
         - nodejs
-        - gcc-c++
+        - gcc
       state: present
 
 - name: Creating Appuser account {{APPUSER}}
@@ -23,10 +23,9 @@
     name: common
     tasks_from: cleanup
 
-- name: Install packages based on package.json.
-  community.general.npm:
-    path: /home/{{APPUSER}}/{{COMPONENT}}/
-    executable: /opt/nvm/v0.10.1/bin/npm
-    state: present
+# - name: Install packages based on package.json.
+#   community.general.npm:
+#     path: /home/{{APPUSER}}/{{COMPONENT}}/
+
 
 ## need to relook into community.general,  currnetly not working
