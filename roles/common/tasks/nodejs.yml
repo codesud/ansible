@@ -23,8 +23,12 @@
     name: common
     tasks_from: cleanup
 
-- name: Installing npm 
-  ansible.builtin.shell: cd /home/roboshop/catalogue && npm install
+- name: Install packages based on package.json.
+  community.general.npm:
+    path: /home/{{APPUSER}}/{{COMPONENT}}/
+
+# - name: Installing npm 
+#   ansible.builtin.shell: cd /home/roboshop/catalogue && npm install
 
 - name: Configuring and Starting {{COMPONENT}}
   ansible.builtin.include_role:
