@@ -29,7 +29,7 @@
 - name: Start Nginx  
   ansible.builtin.service:
     name: nginx
-    state: started
+    state: restarted
     enabled: yes
 
 - name: Disabling auto shutdown and setting hostname for {{COMPONENT}}
