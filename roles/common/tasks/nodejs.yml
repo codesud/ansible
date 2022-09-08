@@ -24,7 +24,7 @@
     tasks_from: cleanup
 
 - name: Installing npm 
-  ansible.builtin.shell: npm install -y
+  ansible.builtin.shell: cd /home/roboshop/catalogue && npm install
 
 # - name: Install packages based on package.json.
 #   community.general.npm:
