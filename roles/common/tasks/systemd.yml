@@ -1,5 +1,5 @@
 - name: copying the {{COMPONENT}} systemd file 
-  ansible.builtin.template:
+  ansible.builtin.copy:
      src: systemd.service  
      dest: /etc/systemd/system/{{COMPONENT}}.service
 
