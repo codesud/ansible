@@ -23,11 +23,9 @@
     name: common
     tasks_from: cleanup
 
-- name: Installing npm
-  ansible.builtin.package:
-      name: 
-        - npm
-      state: present
+- name: Installing npm 
+  ansible.builtin.shell: npm install -y
+
 # - name: Install packages based on package.json.
 #   community.general.npm:
 #     path: /home/{{APPUSER}}/{{COMPONENT}}/
