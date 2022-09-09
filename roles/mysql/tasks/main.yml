@@ -26,3 +26,5 @@
 - name: Reset Password
   debug:
     msg: Resetting the password and rthe info is {{mysql_stat}}
+  when: mysql_stat.failed
+  
