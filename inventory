@@ -18,3 +18,12 @@ cart.roboshopdirect.internal
 
 [mysql]
 mysql.roboshopdirect.internal
+
+[shipping]
+shipping.roboshopdirect.internal
+
+[rabbitmq]
+rabbitmq.roboshopdirect.internal
+
+[payment]
+payment.roboshopdirect.internal
