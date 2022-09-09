@@ -19,11 +19,11 @@
     tasks_from: download 
 
 # use this only when you downlod the code from GitHub
-# - name: Generating the articact 
-#   ansible.builtin.shell: mvn clean package && mv target/shipping-1.0.jar shipping.jar
-#   args: 
-#     chdir: /home/{{APPUSER}}/{{COMPONENT}}/ 
-#   become_user: "{{APPUSER}}"
+- name: Generating the articact 
+  ansible.builtin.shell: mvn clean package && mv target/shipping-1.0.jar shipping.jar
+  args: 
+    chdir: /home/{{APPUSER}}/{{COMPONENT}}/ 
+  become_user: "{{APPUSER}}"
 
 - name: Configuring and Starting {{COMPONENT}}
   ansible.builtin.include_role:
