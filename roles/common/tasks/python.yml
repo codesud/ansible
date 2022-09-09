@@ -21,9 +21,9 @@
     requirements: /home/{{APPUSER}}/{{COMPONENT}}/requirements.txt
     executable: pip3
 
-# - name: Printing the APPUSER output 
-#   debug:
-#     msg: "{{APPUSER_REGISTER}}"
+- name: Printing the APPUSER output 
+  debug:
+    msg: "{{APPUSER_REGISTER}}"
 
 - name: Update uid in APP Config 
   ansible.builtin.lineinfile:
