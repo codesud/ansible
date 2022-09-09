@@ -1,0 +1,26 @@
+- name: Configuring the Yum Repos 
+  ansible.builtin.shell: curl -s {{RABBITMQ_URL}} | sudo bash 
+
+- name: Installing Errlang and {{COMPONENT}} 
+  ansible.builtin.package:
+    name:  
+      - "{{ERLANG_URL}}"
+      - rabbitmq-server
+    state: present 
+
+- name: Starting {{COMPONENT}} 
+  ansible.builtin.service:
+    name: rabbitmq-server 
+    state: started
+    enabled: yes  
+    daemon_reload: yes
+
+- name: Adding {{COMPONENT}} applicaiton user 
+  community.rabbitmq.rabbitmq_user:
+    user: "{{APPUSER}}"
+    password: roboshop123
+    vhost: /
+    configure_priv: .*
+    read_priv: .*
+    write_priv: .*
+    state: present
