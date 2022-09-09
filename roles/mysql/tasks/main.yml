@@ -13,3 +13,8 @@
     name: mysqld
     state: started
     enabled: yes
+
+- name: Check the DB Password 
+  community.mysql.mysql_info:
+    login_user: root 
+    login_password: RoboShop@1
