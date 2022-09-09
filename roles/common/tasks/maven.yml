@@ -1,0 +1,36 @@
+- name: Installing Maven 
+  ansible.builtin.package:
+    name: maven 
+    state: present 
+
+- name: App user {{APPUSER}} User Creation
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: create-user
+
+- name: Cleanup of {{COMPONENT}} and sorting the permissions
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: cleanup
+
+- name: Download and extracting {{COMPONENT}}
+  ansible.builtin.include_role:
+    name: common 
+    tasks_from: download 
+
+# use this only when you downlod the code from GitHub
+# - name: Generating the articact 
+#   ansible.builtin.shell: mvn clean package && mv target/shipping-1.0.jar shipping.jar
+#   args: 
+#     chdir: /home/{{APPUSER}}/{{COMPONENT}}/ 
+#   become_user: "{{APPUSER}}"
+
+- name: Configuring and Starting {{COMPONENT}}
+  ansible.builtin.include_role:
+    name: common 
+    tasks_from: systemd 
+
+- name: Set-hostname 
+  ansible.builtin.include_role:
+    name: common 
+    tasks_from: set-hostname

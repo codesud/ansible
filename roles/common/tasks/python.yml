@@ -1,0 +1,49 @@
+- name: Installing {{COMPONENT}}
+  ansible.builtin.package:
+    name: 
+      - python36
+      - gcc-c++  
+      - python3-devel
+    state: present 
+
+- name: App user {{APPUSER}} User Creation
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: create-user
+
+- name: Download and extracting {{COMPONENT}}
+  ansible.builtin.include_role:
+    name: common 
+    tasks_from: download 
+
+- name: Install Python Dependencies 
+  ansible.builtin.pip:
+    requirements: /home/{{APPUSER}}/{{COMPONENT}}/requirements.txt
+    executable: pip3
+
+# - name: Printing the APPUSER output 
+#   debug:
+#     msg: "{{APPUSER_REGISTER}}"
+
+- name: Update uid in APP Config 
+  ansible.builtin.lineinfile:
+    path: /home/{{APPUSER}}/{{COMPONENT}}/{{COMPONENT}}.ini
+    regexp: '^uid'
+    line: uid = {{APPUSER_REGISTER.uid}}
+
+- name: Update gid in APP Config 
+  ansible.builtin.lineinfile:
+    path: /home/{{APPUSER}}/{{COMPONENT}}/{{COMPONENT}}.ini
+    regexp: '^gid'
+    line: gid = {{APPUSER_REGISTER.group}}
+
+
+- name: Configuring and Starting {{COMPONENT}}
+  ansible.builtin.include_role:
+    name: common 
+    tasks_from: systemd 
+
+- name: Set-hostname 
+  ansible.builtin.include_role:
+    name: common 
+    tasks_from: set-hostname
