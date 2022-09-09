@@ -23,8 +23,52 @@
   ignore_errors: yes
   register: mysql_stat
 
-- name: Reset Password
-  debug:
-    msg: Resetting the password and rthe info is {{mysql_stat}}
-  when: mysql_stat.failed
-  
+- name: Reset Password Block 
+  when: mysql_stat.failed 
+  ignore_errors: yes
+  block:
+    - name: Resetting the DB Paasword
+      ansible.builtin.shell: grep "temporary password" /var/log/mysqld.log | awk '{print $NF}'
+      register: DEFAULT_ROOT_PASSWORD      
+
+    - name: Copy the SQL Password to tmp file 
+      ansible.builtin.copy:
+        src: rootpass.sql
+        dest: /tmp/rootpass.sql
+
+    - name: Resetting MySQL Password 
+      ansible.builtin.shell: mysql  --connect-expired-password -uroot -p"{{DEFAULT_ROOT_PASSWORD.stdout}}"  < /tmp/rootpass.sql
+
+- name: Check validate password plugin is removed or not 
+  ansible.builtin.shell: echo show plugins | mysql -uroot -pRoboShop@1 | grep validate_password
+  register: PLUG_INFO 
+  ignore_errors: yes 
+
+- name: Uninstall Password Validate Plugin  
+  when: PLUG_INFO.rc == 0 
+  block:
+    - name: Copy the SQL Password to tmp file 
+      ansible.builtin.copy:
+        src: password-validate.sql
+        dest: /tmp/password-validate.sql 
+        
+    - name: Uninstall the plugin 
+      ansible.builtin.shell: mysql  --connect-expired-password -uroot -pRoboShop@1 < /tmp/password-validate.sql 
+      
+- name: Download and extracting {{COMPONENT}} Schema
+  ansible.builtin.include_role:
+    name: common 
+    tasks_from: download-from-github  
+
+- name: Load Schema 
+  community.mysql.mysql_db:
+    state: import
+    name: all
+    login_user: root 
+    login_password: RoboShop@1
+    target: /tmp/mysql-main/shipping.sql 
+
+- name: Set-hostname 
+  ansible.builtin.include_role:
+    name: common 
+    tasks_from: set-hostname 
