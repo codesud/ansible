@@ -5,7 +5,7 @@
   ansible.builtin.package:
       name: 
         - nodejs
-        - gcc
+        - gcc-c++ 
       state: present
 
 - name: Creating Appuser account {{APPUSER}}
