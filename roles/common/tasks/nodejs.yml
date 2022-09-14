@@ -31,7 +31,7 @@
 - name: Installing npm 
   ansible.builtin.shell:
     cmd: npm install
-    chdir: /home/{{APPUSER}}/{{COMPONENT}}/
+    chdir: home/{{APPUSER}}/{{COMPONENT}}/
   
 - name: Configuring and Starting {{COMPONENT}}
   ansible.builtin.include_role:
