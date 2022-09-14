@@ -8,17 +8,17 @@
 
 #     # We are directly downloading the code and publishing to our servers
 
-- name: Cleanup of {{COMPONENT}} and sorting the permissions
-  ansible.builtin.include_role:
-    name: common
-    tasks_from: cleanup
+# - name: Cleanup of {{COMPONENT}} and sorting the permissions
+#   ansible.builtin.include_role:
+#     name: common
+#     tasks_from: cleanup
 
-- name: Create a directory if it does not exist
-  ansible.builtin.file:
-    path: /home/roboshop/{{COMPONENT}}
-    state: directory
-    mode: '0755'
-  become_user: "{{APPUSER}}"
+# - name: Create a directory if it does not exist
+#   ansible.builtin.file:
+#     path: /home/roboshop/{{COMPONENT}}
+#     state: directory
+#     mode: '0755'
+#   become_user: "{{APPUSER}}"
 
 # # Download from Nexus
 # - name: Download and extracting {{COMPONENT}} from NEXUS
