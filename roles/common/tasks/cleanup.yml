@@ -3,9 +3,10 @@
     path: /home/{{APPUSER}}/{{COMPONENT}}
     state: absent
 
-- name: Copy the {{COMPONENT}} content to {{APPUSER}}
-  ansible.builtin.copy:
-    src: /tmp/{{COMPONENT}}-main/
-    dest: /home/{{APPUSER}}/{{COMPONENT}}
-    remote_src: yes 
-  become_user: "{{APPUSER}}"
+# Only needed when you download from GitHUb
+# - name: Copy the {{COMPONENT}} content to {{APPUSER}}
+#   ansible.builtin.copy:
+#     src: /tmp/{{COMPONENT}}-main/
+#     dest: /home/{{APPUSER}}/{{COMPONENT}}
+#     remote_src: yes 
+#   become_user: "{{APPUSER}}"
