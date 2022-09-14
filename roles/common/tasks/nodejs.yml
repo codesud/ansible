@@ -27,7 +27,7 @@
 #   community.general.npm:
 #     path: /home/{{APPUSER}}/{{COMPONENT}}/
 
-#Used this since npm module aboce did not work
+#Used this since npm module above did not work
 - name: Installing npm 
   ansible.builtin.shell: cd /home/{{APPUSER}}/{{COMPONENT}} && npm install -y
 
