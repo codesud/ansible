@@ -15,7 +15,7 @@
     enabled: yes  
     daemon_reload: yes
 
-- name: Adding {{COMPONENT}} applicaiton user 
+- name: Adding {{COMPONENT}} application user 
   community.rabbitmq.rabbitmq_user:
     user: "{{APPUSER}}"
     password: roboshop123
