@@ -27,6 +27,7 @@
   community.general.npm:
     path: /home/{{APPUSER}}/{{COMPONENT}}/
 
+##Used this sice npm module aboce did not work
 # - name: Installing npm 
 #   ansible.builtin.shell: cd /home/{{APPUSER}}/{{COMPONENT}} && npm install
 
