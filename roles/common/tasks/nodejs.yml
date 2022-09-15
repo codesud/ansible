@@ -1,38 +1,33 @@
-- name: Configure Yum repos
+- name: Configure Yum Repos 
   ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
 - name: Installing {{COMPONENT}}
   ansible.builtin.package:
-      name: 
-        - nodejs
-        - gcc-c++ 
-      state: present
+    name: 
+      - nodejs
+      - gcc-c++ 
+    state: present 
 
-- name: Creating Appuser account {{APPUSER}}
+- name: App user {{APPUSER}} User Creation
   ansible.builtin.include_role:
     name: common
     tasks_from: create-user
 
-- name: Download and extracting {{COMPONENT}} from github
+- name: Download and extracting {{COMPONENT}}
   ansible.builtin.include_role:
-    name: common
-    tasks_from: download-from-github
+    name: common 
+    tasks_from: download 
 
-- name: Cleanup of {{COMPONENT}}
+- name: Cleanup of {{COMPONENT}} and sorting the permissions
   ansible.builtin.include_role:
     name: common
     tasks_from: cleanup
 
-# - name: Install packages based on package.json.
-#   community.general.npm:
-#     path: /home/{{APPUSER}}/{{COMPONENT}}/
+- name: Install packages based on package.json.
+  community.general.npm:
+    path: /home/{{APPUSER}}/{{COMPONENT}}/
 
-#Used this since npm module above did not work
-- name: Installing npm 
-  ansible.builtin.shell:
-    cmd: npm install
-    chdir: home/{{APPUSER}}/{{COMPONENT}}/
-  
+
 - name: Configuring and Starting {{COMPONENT}}
   ansible.builtin.include_role:
     name: common 
