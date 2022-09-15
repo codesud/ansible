@@ -1,5 +1,5 @@
 - name: Playbook to setup the roboshop project 
-  hosts: "{{ COMPONENT }}"
+  hosts: localhost
   become: yes   
   roles:  
     - "{{ COMPONENT }}"
