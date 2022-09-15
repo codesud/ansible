@@ -3,9 +3,9 @@
     path: /home/{{APPUSER}}/{{COMPONENT}}
     state: absent   ## Deleting the old files 
 
-# - name: Copy the {{COMPONENT}} content to {{APPUSER}} home directory 
-#   ansible.builtin.copy:
-#      src: /tmp/{{COMPONENT}}-main/
-#      dest: /home/{{APPUSER}}/{{COMPONENT}}/
-#      remote_src: yes
-#   become_user: "{{APPUSER}}"
+- name: Copy the {{COMPONENT}} content to {{APPUSER}} home directory 
+  ansible.builtin.copy:
+     src: /tmp/{{COMPONENT}}-main/
+     dest: /home/{{APPUSER}}/{{COMPONENT}}/
+     remote_src: yes
+  become_user: "{{APPUSER}}"
