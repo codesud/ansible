@@ -58,7 +58,7 @@
 - name: Download and extracting {{COMPONENT}} Schema
   ansible.builtin.include_role:
     name: common 
-    tasks_from: download-from-github  
+    tasks_from: download
 
 - name: Load Schema 
   community.mysql.mysql_db:
