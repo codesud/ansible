@@ -1,5 +1,5 @@
 - name: Playbook to setup the roboshop project 
-  hosts: localhost
+  # hosts: localhost #Use it for pull only
   become: yes   
   roles:  
     - "{{ COMPONENT }}"
