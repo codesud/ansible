@@ -1,7 +1,7 @@
 - name: Playbook to setup the roboshop project 
-  hosts: "{{ COMPONENT }}-{{ ENV }}"
+  hosts: "{{COMPONENT}}-{{ENV}}"
   # hosts: localhost      #Use it for pull only
   become: yes             # Runs the whole playbook as a root user 
   roles:  
-    - "{{ COMPONENT }}"
+    - "{{COMPONENT}}"
  
