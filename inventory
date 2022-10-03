@@ -28,8 +28,6 @@ rabbitmq-dev.roboshopdirect.internal
 [payment-dev]
 payment-dev.roboshopdirect.internal
 
-
-
 [frontend-prod]
 frontend-prod.roboshopdirect.internal
 
