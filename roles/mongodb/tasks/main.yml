@@ -34,7 +34,12 @@
     - catalogue 
     - users
 
+# Ensure to run this at the end of all the tasks only.
 - name: Disabling auto shutdown and setting hostname for {{COMPONENT}}
   ansible.builtin.include_role:
     name: common
     tasks_from: set-hostname
+
+- name: Adding the task indicating that mongodb config is completed
+  debug: 
+    msg: Mongodb config is completed
