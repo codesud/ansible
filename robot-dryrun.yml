@@ -53,7 +53,7 @@
         - name: Import a role
           import_role:
             name: "{{COMPONENT}}"
-          ignore_errors: yes
+          # ignore_errors: yes
           become: yes
       always:
         - name: Terminate instances that were previously launched
