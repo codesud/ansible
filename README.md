@@ -94,4 +94,15 @@ Ansible always executes roles listed in dependencies before the role that lists 
 
 ## This is just message added to send the chenges from feature to main
 
+## I will show how merge happens with commands locally
+```
+I want to take the changes of PROD Branch and merge then to master branch
+1) git checkout -b prod 
+2) go all your changes on this prod branch
+3) Commint the changes on this prod branch
+4) Now switch to master branch
+5) git merge prod  ( Prod changes will be merged to master branch )
+What is a conflict ? --> If the same file is edited by two people in the checkout and if the file is merfed and the person 2 will see a confict stating that this file is modisied since your last checkout!!! Then you need to resolve the conflict, but merging the person1 changes to your repo or accept the changes.
 
+ansible-pull -U https://github.com/b49-clouddevops/ansible.git -e COMPONENT=frontend -e ENV=dev -e TAG_NAME=0.0.2 roboshop.yml
+```
