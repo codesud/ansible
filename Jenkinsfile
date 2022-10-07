@@ -8,6 +8,14 @@ pipeline {
         SSH_CRED = credentials('SSH-Centos7')
     }
     stages {
+            stage('Lint Checks') {  // This will be executed against the feature branch only
+             steps {
+                sh "env"
+                sh "echo Style Checks"
+                sh "echo running is feature branch"
+            }
+        }
+
         stage('Do a dry-run') {
             steps {
                 sh "env"   // Just to see tne environment variables as a part of the pipeline
