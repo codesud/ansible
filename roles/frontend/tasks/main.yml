@@ -12,7 +12,7 @@
   ansible.builtin.file:
     path:  home/centos/{{COMPONENT}}
     state: directory
-  become_user: centos
+    mode: '0755'
 
 
 # Download from Nexus
@@ -21,7 +21,7 @@
     src: "{{REPO_URL}}"
     dest: /home/centos/{{COMPONENT}}
     remote_src: yes   ## This will be yes, if the source file is not in the ANSIBLE SERVER
-  become_user: centos
+
 
 - name: Cleanup of Old HTML Content 
   ansible.builtin.file:
