@@ -9,5 +9,5 @@
 - name: Download and extracting {{COMPONENT}} from Nexus
   ansible.builtin.unarchive: 
     src: "{{REPO_URL}}"
-    dest: /tmp
+    dest: /tmp/{{COMPONENT}}
     remote_src: yes   ## This will be yes, if the source file is not in the ANSIBLE SERVER
