@@ -38,7 +38,7 @@
 
 - name: copy of frontend content to nginx path 
   ansible.builtin.copy:
-     src: /home/roboshop/{{COMPONENT}}-main/static/
+     src: /home/centos/{{COMPONENT}}/{{COMPONENT}}-main/static/
      dest: /usr/share/nginx/html
      remote_src: yes
 
