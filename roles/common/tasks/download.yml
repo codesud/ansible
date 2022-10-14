@@ -7,11 +7,11 @@
 
 
 
-- name: Create a directory if it does not exist
-  ansible.builtin.file:
-    path:  home/roboshop/{{COMPONENT}}
-    state: directory
-  become_user: roboshop
+# - name: Create a directory if it does not exist
+#   ansible.builtin.file:
+#     path:  home/roboshop/{{COMPONENT}}
+#     state: directory
+#   become_user: roboshop
 
 
 # Download from Nexus
