@@ -2,24 +2,17 @@
   ansible.builtin.package:
     name: nginx 
     state: present 
-
+## Use this for Github
 # - name: Download and extracting {{COMPONENT}}
 #   ansible.builtin.include_role:
 #     name: common 
 #     tasks_from: download 
 
-- name: Create a directory if it does not exist
-  ansible.builtin.file:
-    path:  home/centos/{{COMPONENT}}
-    state: directory
-    mode: '0755'
-
-
 # Download from Nexus
 - name: Download and extracting {{COMPONENT}} from Nexus
   ansible.builtin.unarchive: 
-    src: "{{REPO_URL}}"
-    dest: /home/centos/{{COMPONENT}}
+    src: "{{NEXUS_URL}}"
+    dest: /tmp
     remote_src: yes   ## This will be yes, if the source file is not in the ANSIBLE SERVER
 
 
@@ -38,7 +31,7 @@
 
 - name: copy of frontend content to nginx path 
   ansible.builtin.copy:
-     src: /home/centos/{{COMPONENT}}/{{COMPONENT}}-main/static/
+     src: /tmp/
      dest: /usr/share/nginx/html
      remote_src: yes
 
