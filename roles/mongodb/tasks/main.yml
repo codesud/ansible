@@ -23,7 +23,7 @@
 - name: Download and extracting {{COMPONENT}} from github
   ansible.builtin.include_role:
     name: common
-    tasks_from: download
+    tasks_from: download-from-github
 
 ## To install it, use: ansible-galaxy collection install community.mongodb
 - name: Loading Catalogue and Users Schemas

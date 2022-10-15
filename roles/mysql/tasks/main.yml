@@ -16,6 +16,12 @@
     state: started
     enabled: yes
 
+# new fix, ensure you also install PyMySql
+- name: Installing PyMySQL
+  ansible.builtin.pip:   #Pythong 2 
+    name: PyMySQL
+    executable: pip3  #Installation with pip3
+
 - name: Check the DB Password 
   community.mysql.mysql_info:
     login_user: root 
