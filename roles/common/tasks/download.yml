@@ -15,11 +15,26 @@
 
 
 # Download from Nexus
+
+- name: Cleanup of {{COMPONENT}} and sorting the permissions
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: cleanup
+
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: /home/roboshop/{{COMPONENT}}
+    state: directory
+    mode: '0755'
+  become_user: "{{APPUSER}}"
+
 - name: Download and extracting {{COMPONENT}} from Nexus
   ansible.builtin.unarchive: 
-    src: "{{REPO_URL}}"
+    src: "{{NEXUS_URL}}"
     dest: /home/roboshop/{{COMPONENT}}
     remote_src: yes   ## This will be yes, if the source file is not in the ANSIBLE SERVER
   become_user: roboshop
+
+
 
 

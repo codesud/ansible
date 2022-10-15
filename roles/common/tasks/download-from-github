@@ -1,0 +1,6 @@
+- name: Download and extracting {{COMPONENT}}
+  ansible.builtin.unarchive:
+    src: "{{GITHUB_REPO_URL}}"
+    dest: /tmp
+    remote_src: yes  ## This will be yes, if 
+    
