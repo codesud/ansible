@@ -2,51 +2,37 @@
   ansible.builtin.package:
     name: nginx 
     state: present 
-## Use this for Github
+
+# Use this for GitHub.
+
 # - name: Download and extracting {{COMPONENT}}
 #   ansible.builtin.include_role:
 #     name: common 
 #     tasks_from: download 
 
 # Download from Nexus
-- name: Download and extracting {{COMPONENT}} from Nexus
-  ansible.builtin.unarchive: 
+- name: Download and extracting {{COMPONENT}} from NEXUS
+  ansible.builtin.unarchive:
     src: "{{NEXUS_URL}}"
     dest: /tmp
-    remote_src: yes   ## This will be yes, if the source file is not in the ANSIBLE SERVER
-
+    remote_src: yes  ## This will be yes, if  
 
 - name: Cleanup of Old HTML Content 
   ansible.builtin.file:
     path: /usr/share/nginx/html
     state: absent    # Absent deletes the files.
 
-
-# - name: copy of frontend content to nginx path 
-#   ansible.builtin.copy:
-#      src: /tmp/frontend-main/static/
-#      dest: /usr/share/nginx/html
-#      remote_src: yes
-
-
 - name: copy of frontend content to nginx path 
   ansible.builtin.copy:
-     src: /tmp/
+     src:  /tmp/
      dest: /usr/share/nginx/html
      remote_src: yes
-
+   
 # If src and dest ends with /, it's very important to know what you're aming directory, not just the content.
 - name: copy the proxy file 
   ansible.builtin.template:
      src: roboshop.conf
      dest: /etc/nginx/default.d/roboshop.conf
-  notify: Restart-Nginx   # When ever there is a change in this file, restart of nginx will happen
-
-# If src and dest ends with /, it's very important to know what you're aming directory, not just the content.
-- name: copy nginx file 
-  ansible.builtin.template:
-     src: nginx.conf
-     dest: /etc/nginx/nginx.conf
   notify: Restart-Nginx   # When ever there is a change in this file, restart of nginx will happen
 
 # This happens only when the service is installed. As rest of the times it will be up.
